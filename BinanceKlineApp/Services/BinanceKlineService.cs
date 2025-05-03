@@ -7,9 +7,9 @@ using DotNetEnv;
 
 internal class BinanceKlineService : IKlineService
 {
-    public async Task<List<KlineDto>> GetKlinesAsync(string symbol, DateTime startTime, DateTime endTime)
+    public async Task<IEnumerable<KlineDto>> GetKlinesAsync(string symbol, DateTime startTime, DateTime endTime)
     {
-        Env.Load();
+        Env.Load(Path.Combine(AppContext.BaseDirectory, ".env"));
         var apiKey = Environment.GetEnvironmentVariable("BINANCE_API_KEY")!;
         var apiSecret = Environment.GetEnvironmentVariable("BINANCE_API_SECRET")!;
 
